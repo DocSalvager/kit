@@ -32,23 +32,23 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
       - `ln -s ../lib/kit-045 kit-045`
       - `ln -s ../lib/kit-045.meta kit-045.meta`
     - Place kit-045.conf in a `/home/<user>/.config/kit` directory.
-    - Insure that HOMEDIR= setting is...
-      - `HOMEDIR="/opt/DocSalvager"`
-    - Edit user's .bashrc file to append bin directory to `$PATH`. If `$PATH` ends in a colon (:)...
+      - Insure that HOMEDIR= setting is...
+        - `HOMEDIR="/opt/DocSalvager"`
+    - Edit user's `.bashrc` file to append bin directory to `$PATH`. If `$PATH` ends in a colon (:)...
       - `PATH=$PATH/opt/DocSalvager/bin:`
-Once the 3 files are in place, kit can be used in a variety of ways such as ...
-  - `kit`
-  - `kit --help`
-    - Displays help in a scrollable window (assuming YAD or dialog are available) for the kit() function which starts off everything.
-  - `kit meta fnInit`
-    - Displays help in a scrollable window for the fnInit() function which is called at the beginning of every other function to handle --help, --version and a number of other common options.
-  - `kit meta fnInit --inspect`
-    - Displays help in a scrollable window for the fnInit() function as well as a diagnostic window showing the function stack and other debugging information. This will noticeably slow down execution as all debuggers do so the timings should be considered relative to each other rather than absolute.
-  - In the directory with kit-045, create a symlink that runs the meta() function.
-    - The name must _*exactly*_ match the function name.
-      - `ln -s kit-045 meta`
-    - Then use the new command...
-      - `meta fnInit`
+  - Once the 3 files are in place, kit can be used in a variety of ways such as ...
+    - `kit`
+    - `kit --help`
+      - Displays help in a scrollable window (assuming YAD or dialog are available) for the kit() function which starts off everything.
+    - `kit meta fnInit`
+      - Displays help in a scrollable window for the fnInit() function which is called at the beginning of every other function to handle --help, --version and a number of other common options.
+    - `kit meta fnInit --inspect`
+      - Displays help in a scrollable window for the fnInit() function as well as a diagnostic window showing the function stack and other debugging information. This will noticeably slow down execution as all debuggers do so the timings should be considered relative to each other rather than absolute.
+    - In the directory with kit-045, create a symlink that runs the meta() function.
+      - The name must _*exactly*_ match the function name.
+        - `ln -s kit-045 meta`
+      - Then use the new command...
+        - `meta fnInit`
 
 ## GUI and CLI Interface
 kit-045 attempts to use the best interface available for user interaction. Currently, YAD, dialog/cdialog and plain text (CLI) are supported. Zenity support is in there but is deprecated and will be removed in future versions. There are a common set of options (--GUI, --CLI, --NODLG) to override the default behavior that can be used with any function.
