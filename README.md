@@ -13,7 +13,7 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
 
 ## File Locations
   - Place kit, kit-045 and kit-045.meta (or symlinks to them) in one of the directories in $PATH.
-  - Place kit-045.conf in a /home/<user>/.config/kit directory.
+  - Place kit-045.conf in a /home/\<user\>/.config/kit directory.
 
 ## Files
   kit is just a symlink to kit-045.
