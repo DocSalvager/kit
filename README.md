@@ -1,6 +1,8 @@
 # kit-045
 *Code Revised 2019-09-11 by docsalvager*
 
+![]( kit-045-meta.png)
+
 (EXPERIMENTAL)
 
 A "self-documenting" bash (not POSIX) "framework" of functions that encapsulate a few best practices as well as experimental techniques. The priorities have been ...
