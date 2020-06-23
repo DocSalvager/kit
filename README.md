@@ -12,15 +12,15 @@ A "self-documenting" bash (not POSIX) "framework" of functions that encapsulate 
   - to maximize readability and thus...
   - to minimize develpment (and thus debugging) time for enhancements and bug-fixes
 
-Kit uses every "bashism" I can find since anything done in compiled code is many times faster than anything done in script. It would be impractical to try to make kit POSIX-compliant as it depends heavily upon bash introspection facilities like the FUNCNAME\[\] array that do not exist in POSIX shells.
+Kit uses every "bashism" I can find since anything done in compiled code is many times faster than anything done in script. It would be impractical to try to make `kit` POSIX-compliant as it depends heavily upon bash introspection facilities like the `FUNCNAME[]` array that do not exist in POSIX shells.
 
 ## Files
-  kit is just a symlink to kit-045.
+  `kit` is just a symlink to kit-045.
   
-  kit-045 is the executable script.
+  `kit-045` is the executable script.
   
-  kit-045.meta is the full, detailed documentation for each function in a format much like manpages and is also executable but doesn't do much. It is made executable because it contains executable code in the form of Command Substitution `$( ... )` within the help text. kit-045 searches kit-045.meta for the function variable and returns the text value. Sometimes this may include text inserted via Command Substitution.
-  
+  `kit-045.meta` is the full, detailed documentation for each function in a format much like manpages and is also executable but doesn't do much. It is made executable because it contains executable code in the form of Command Substitution `$( ... )` within the help text. `kit-045` searches `kit-045.meta` for the function variable and returns the text value. Sometimes this may include text inserted via Command Substitution.
+
 ## Getting Started (recommended)
 
   - **Setup `kit` environment**
@@ -28,13 +28,13 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
       ~~~
       /opt/DocSalvager
       ~~~
-    - Create the bin and lib subdirectories
+    - Create the `bin` and `lib` subdirectories
       ~~~
       /opt/DocSalvager/bin
       /opt/DocSalvager/lib
       ~~~
     - Put files in appropriate directories
-      - Place kit, kit-045 and kit-045.meta in `/opt/DocSalvager/lib`
+      - Place `kit`, `kit-045` and `kit-045.meta` in `/opt/DocSalvager/lib`
       - Create symlinks to lib files from bin
         ~~~
         cd /opt/DocSalvager/bin
@@ -42,14 +42,14 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
         ln -s ../lib/kit-045 kit-045
         ln -s ../lib/kit-045.meta kit-045.meta
         ~~~
-    - Place kit-045.conf in a `/home/<user>/.config/kit` directory.
-      - Insure that HOMEDIR= setting is...
+    - Place `kit-045.conf` in a `/home/<user>/.config/kit` directory.
+      - Insure that `HOMEDIR=` setting is...
         ~~~
         HOMEDIR="/opt/DocSalvager"
         ~~~
 
   - **Setup user environment to access `kit` environment**
-    - This can be done several ways and if you already have one that works for you, then use it. Here are two. _(And yes, it's too involved and too fragile. Will be improved in a future version... probably kit-047.)_
+    - This can be done several ways and if you already have one that works for you, then use it. Here are two. _(And yes, it's too involved and too fragile. Will be improved in a future version... probably `kit-047`.)_
     - Technique #1 - Add `/opt/DocSalvager/bin` to `$PATH`
       - Edit user's `.bashrc` file to append bin directory to `$PATH`.
         - For example, if current `$PATH` ends in a colon (:)...
