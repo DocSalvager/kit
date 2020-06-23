@@ -36,7 +36,10 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
         - `HOMEDIR="/opt/DocSalvager"`
     - Edit user's `.bashrc` file to append bin directory to `$PATH`. If `$PATH` ends in a colon (:)...
       - `PATH=$PATH/opt/DocSalvager/bin:`
-  - Once the 3 files are in place, kit can be used in a variety of ways such as ...
+
+## Using kit
+The kit script can be used in 3 ways...
+  - It can be run from the command line
     - `kit`
     - `kit --help`
       - Displays help in a scrollable window (assuming YAD or dialog are available) for the kit() function which starts off everything.
@@ -49,6 +52,23 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
         - `ln -s kit-045 meta`
       - Then use the new command...
         - `meta fnInit`
+  - It can be sourced at the beginning of another script which will load the entire script into memory (currently 266K) and allow its functions to be called exactly like they call each other.
+    - `source /opt/DocSalvager/bin/kit`
+  - Any of its functions can be called from within another script just like a command.
+    ~~~
+    _help="
+    NAME
+      ...
+    DESCRIPTION
+      ...
+      :
+    "
+    #
+    `if [[ "$1" == "--help" ]]
+    then
+      kit dialog --title="MyScript" -- "$_help"
+    fi
+    ~~~
 
 ## GUI and CLI Interface
 kit-045 attempts to use the best interface available for user interaction. Currently, YAD, dialog/cdialog and plain text (CLI) are supported. Zenity support is in there but is deprecated and will be removed in future versions. There are a common set of options (--GUI, --CLI, --NODLG) to override the default behavior that can be used with any function.
