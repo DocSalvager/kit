@@ -31,7 +31,7 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
       - `ln -s ../lib/kit kit`
       - `ln -s ../lib/kit-045 kit-045`
       - `ln -s ../lib/kit-045.meta kit-045.meta`
-    - Place kit-045.conf in a `/home/\<user\>/.config/kit` directory.
+    - Place kit-045.conf in a `/home/<user>/.config/kit` directory.
     - Insure that HOMEDIR= setting is...
       - `HOMEDIR="/opt/DocSalvager"`
     - Edit user's .bashrc file to append bin directory to `$PATH`. If `$PATH` ends in a colon (:)...
