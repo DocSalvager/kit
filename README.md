@@ -1,5 +1,5 @@
 # kit-045
-*Revised 2019-09-11 by docsalvager*
+*Code Revised 2019-09-11 by docsalvager*
 
 (EXPERIMENTAL)
 
@@ -11,10 +11,6 @@ A "self-documenting" bash (not POSIX) "framework" of functions that encapsulate 
 
 Kit uses every "bashism" I can find since anything done in compiled code is many times faster than anything done in script. It would be impractical to try to make kit POSIX-compliant as it depends heavily upon bash introspection facilities like the FUNCNAME\[\] array that do not exist in POSIX shells.
 
-## File Locations
-  - Place kit, kit-045 and kit-045.meta (or symlinks to them) in one of the directories in $PATH.
-  - Place kit-045.conf in a /home/\<user\>/.config/kit directory.
-
 ## Files
   kit is just a symlink to kit-045.
   
@@ -22,7 +18,24 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
   
   kit-045.meta is the full, detailed documentation for each function in a format much like manpages and is also executable but doesn't do much. It is made executable because it contains executable code in the form of Command Substitution `$( ... )` within the help text. kit-045 searches kit-045.meta for the function variable and returns the text value. Sometimes this may include text inserted via Command Substitution.
   
-## Getting Started
+## Getting Started (recommended)
+  - Create a directory for everything related to `kit` except the user's `kit-045.conf` file.
+    - `/opt/DocSalvager`
+  - Create the bin and lib subdirectories
+    - `/opt/DocSalvager/bin`
+    - `/opt/DocSalvager/lib`
+  - Put files in appropriate directories
+    - Place kit, kit-045 and kit-045.meta in `/opt/DocSalvager/lib`
+    - Create symlinks to lib files from bin
+      - `cd /opt/DocSalvager/bin`
+      - `ln -s ../lib/kit kit`
+      - `ln -s ../lib/kit-045 kit-045`
+      - `ln -s ../lib/kit-045.meta kit-045.meta`
+    - Place kit-045.conf in a `/home/\<user\>/.config/kit` directory.
+    - Insure that HOMEDIR= setting is...
+      - `HOMEDIR="/opt/DocSalvager"`
+    - Edit user's .bashrc file to append bin directory to `$PATH`. If `$PATH` ends in a colon (:)...
+      - `PATH=$PATH/opt/DocSalvager/bin:`
 Once the 3 files are in place, kit can be used in a variety of ways such as ...
   - `kit`
   - `kit --help`
