@@ -18,7 +18,7 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
   - A symlink pointing to the `kit` symlink or `kit-045` script with the name of a `kit` function, will initialize `kit` and invoke that function just as if it were called inside a script that sourced `kit`.
   - User interaction functions try to use the best user interface tool available like `yad`(GTK GUI), `dialog`(curses graphics) or commandline text (CLI).
   - Extensive diagnostic functions like the `--inspect` option to aid debugging.
-  - Extensive manpage-like help documentation for every single function (stored in `kit-045.meta`.
+  - Extensive manpage-like help documentation for every single function (stored in `kit-045.meta`).
 
 ## Files
   `kit` is just a symlink to kit-045.
