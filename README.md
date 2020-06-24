@@ -163,4 +163,4 @@ Comments are _after_ the code because it is the code that is being executed and 
 In fact you'll find a lot of techniques in kit that violate common practice. Be assured that I have spent days experimenting with different techniques and found that a great many of the "best practices" in common use do not speed up execution appreciably, often slow it down, and very often make debugging harder. Bash has clearly been designed to acheive the best performance possible without limiting powerful functionality. Like regular expressions, that often means cryptic syntax. I've done the best I can to explain what's happening (for my future befuddled self at the least).
 
 ## Future Versions
-Currently working on kit-047 which has a number of core changes and so is incompatible with kit-045. For the curious, kit-046 was a rabbithole I went down and abandoned.
+Currently working on `kit-047` which has a number of core changes and so is incompatible with `kit-045`. For the curious, `kit-046` was a rabbithole I went down and abandoned.
