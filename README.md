@@ -14,8 +14,16 @@ A "self-documenting" bash (not POSIX) "framework" of functions that encapsulate 
 
 Kit uses every "bashism" I can find since anything done in compiled code is many times faster than anything done in script. It would be impractical to try to make `kit` POSIX-compliant as it depends heavily upon bash introspection facilities like the `FUNCNAME[]` array that do not exist in POSIX shells.
 
+## Features
+  - A symlink pointing to the `kit` symlink or `kit-045` script with the name of a `kit` function, will initialize `kit` and invoke that function just as if it were called inside a script that sourced `kit`.
+  - User interaction functions try to use the best user interface tool available like `yad`(GTK GUI), `dialog`(curses graphics) or commandline text (CLI).
+  - Extensive diagnostic functions like the `--inspect` option to aid debugging.
+  - Extensive manpage-like help documentation for every single function (stored in `kit-045.meta`.
+
 ## Files
   `kit` is just a symlink to kit-045.
+
+  `kit.meta` is just a symlink to kit-045.meta.
   
   `kit-045` is the executable script.
   
@@ -102,7 +110,7 @@ The kit script can be used in 3 ways...
     ~~~
     source /opt/DocSalvager/bin/kit
     ~~~
-  - Without sourcing it, any `kit` function can be called from within another script just like a command. _(If there is a symlink to `kit` as done above with `meta`, the `kit ` prefix show below is not required. But be careful to avoid conflicts with existing commands as `dialog` would be!)_
+  - Without sourcing it, any `kit` function can be called from within another script just like a command. _(If there is a symlink to `kit` with the exact same name as a `kit` function as done above with `meta`, the `kit` prefix shown below is not required. But be careful to avoid conflicts with existing commands as `dialog` would be!)_
     ~~~
     _help="
     NAME
@@ -128,6 +136,9 @@ With the exception of one-time initialization code at the beginning of the scrip
 
 ## Submitted Changes
 Please make a copy of the function to be changed and append '\_1' (without quotes) or similar. Only underscores (\_) are used since there are many variables derived from function names. This suffix will require each other function that calls this function to be likewise changed to use the new name. This will alert us to the other functions that need to be tested against the change. If there are many functions affected, please list the main ones and note that there are others. Please document extensively as to **why** the change is necessary or better and what is being accomplished. Restating in prose what the code clearly shows does not add anything useful.
+
+  ### Backward Compatibility
+  Examine the `kit-045` script for examples of how to support backward compatibility with function name synonyms built using the `aliasOf()` function. This same mechanism can be used to create "alias functions" with all lowercase names (or completely different names) that will then work with symlinks of that name pointing to `kit`.
 
 ## Code Styling For Easier Debugging
 "Over 90% of development time is (or should be) spent in debugging."
