@@ -11,23 +11,28 @@ A "self-documenting" bash (not POSIX) "framework" of functions that encapsulate 
   - to maximize performance
   - to maximize readability and thus...
   - to minimize develpment (and thus debugging) time for enhancements and bug-fixes
+  - to be as "self-documenting" as is practical
 
 Kit uses every "bashism" I can find since anything done in compiled code is many times faster than anything done in script. It would be impractical to try to make `kit` POSIX-compliant as it depends heavily upon bash introspection facilities like the `FUNCNAME[]` array that do not exist in POSIX shells.
 
 ## Features
-  - A symlink pointing to the `kit` symlink or `kit-045` script with the name of a `kit` function, will initialize `kit` and invoke that function just as if it were called inside a script that sourced `kit`.
+  - Can be invoked as a command on the commandline or in other scripts or sourced.
+  - Each function can be invoked as a command which has available to it the other functions in `kit`.
+  - Solves problems once and encapsulates into easier to use functions for future work thus minimizing "reinventing the wheel".
   - User interaction functions try to use the best user interface tool available like `yad`(GTK GUI), `dialog`(curses graphics) or commandline text (CLI).
   - Extensive diagnostic functions like the `--inspect` option to aid debugging.
   - Extensive manpage-like help documentation for every single function (stored in `kit-045.meta`).
+  - Despite it's size and extensive comments and documentation, `kit` is quite responsive.
+  - A symlink pointing to the `kit` symlink or `kit-045` script with the name of a `kit` function, will initialize `kit` and invoke that function just as if it were called inside a script that sourced `kit`.
 
 ## Files
-  `kit` is just a symlink to kit-045.
+  `kit` is a symlink to `kit-045`. It should be changed to point to the new version when that is installed.
 
-  `kit.meta` is just a symlink to kit-045.meta.
+  `kit.meta` is a symlink to `kit-045.meta` which likewise should be redirected to the new version's `.meta` file.
   
-  `kit-045` is the executable script.
+  `kit-045` is the executable script (approx. 261K).
   
-  `kit-045.meta` is the full, detailed documentation for each function in a format much like manpages and is also executable but doesn't do much. It is made executable because it contains executable code in the form of Command Substitution `$( ... )` within the help text. `kit-045` searches `kit-045.meta` for the function variable and returns the text value. Sometimes this may include text inserted via Command Substitution.
+  `kit-045.meta` (approx. 213K) is the full, detailed documentation for each function in a format much like manpages and is also executable but doesn't do much. It is made executable because it contains executable code in the form of Command Substitution `$( ... )` within the help text. `kit-045` searches `kit-045.meta` for the function variable and returns the text value. Sometimes this may include text inserted via Command Substitution. Help documentation can be included within a function (see `kit-045` for a few examples) but that is discouraged since it adds to the already very large script. By programatically looking up the variable in `kit-045.meta` containing the help text, we keep the script half the size it would otherwise be without any appreciable performance penalty.
 
 ## Getting Started (recommended)
 
@@ -42,13 +47,14 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
       /opt/DocSalvager/lib
       ~~~
     - Put files in appropriate directories
-      - Place `kit`, `kit-045` and `kit-045.meta` in `/opt/DocSalvager/lib`
+      - Place `kit-045` and `kit-045.meta` in `/opt/DocSalvager/lib`
       - Create symlinks to lib files from bin
         ~~~
         cd /opt/DocSalvager/bin
-        ln -s ../lib/kit kit
-        ln -s ../lib/kit-045 kit-045
+        ln -s ../lib/kit-045      kit-045
         ln -s ../lib/kit-045.meta kit-045.meta
+        ln -s kit-045             kit
+        ln -s kit-045.meta        kit.meta
         ~~~
     - Place `kit-045.conf` in a `/home/<user>/.config/kit` directory.
       - Insure that `HOMEDIR=` setting is...
@@ -81,11 +87,16 @@ Kit uses every "bashism" I can find since anything done in compiled code is many
           cd $HOME
           mkdir bin lib
           cd $HOME/bin
-          ln -s /opt/DocSalvager DocSalvager
-          ln -s DocSalvager/kit            kit
-          ln -s DocSalvager/kit-045        kit-045
-          ln -s DocSalvager/kit-045.meta   kit-045.meta
+          ln -s /opt/DocSalvager/bin  DocSalvager
+          ln -s DocSalvager/kit       kit
+          ln -s DocSalvager/kit.meta  kit.meta
           ~~~
+      - Add user's `bin` directory to `$PATH`
+        - Edit user's `.bashrc` file to append bin directory to `$PATH`.
+          - For example, if current `$PATH` ends in a colon (:)...
+            ~~~
+            PATH=$PATH$HOME/bin:
+            ~~~
 
 ## Using kit
 The kit script can be used in 3 ways...
